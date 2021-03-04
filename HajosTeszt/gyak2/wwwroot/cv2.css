@@ -2,9 +2,21 @@
     box-sizing: border-box;
 }
 
+html{
+    background-color: azure;
+}
+
 body {
     font-weight: bold;
     text-align: center;
+}
+
+div {
+    margin: 1.5px;
+    padding: 5px;
+    border: 2px solid darkblue;
+    background-color: powderblue;
+    
 }
 
 figure {
@@ -14,6 +26,13 @@ figure {
 img {
     border-radius: 8px;
     height:200px;
+}
+
+span{
+    color: midnightblue;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
 }
 
 #article, #aside, #footer, #header, #nav {
@@ -34,17 +53,22 @@ img {
         text-decoration: none;
         color: black;
         flex: 1 1 auto;
+        font-size: 1.3em;
     }
 
 #article {
     background-color:lightskyblue;
     text-align: left;
     text-indent: 10px;
+    font-size: 1.05em;
+    margin-right:5px;
 }
 
 #aside {
     background-color: steelblue;
     text-align: justify;
+    font-size: 1.1em;
+    margin-left:5px;
 }
 
 #footer {
