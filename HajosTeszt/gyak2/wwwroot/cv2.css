@@ -50,10 +50,10 @@ span{
 }
 
     #nav a {
-        text-decoration: none;
+        text-decoration: underline;
         color: black;
         flex: 1 1 auto;
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 
 #article {
@@ -61,7 +61,6 @@ span{
     text-align: left;
     text-indent: 10px;
     font-size: 1.05em;
-    margin-right:5px;
 }
 
 #aside {
