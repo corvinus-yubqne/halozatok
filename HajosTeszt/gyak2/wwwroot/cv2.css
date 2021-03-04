@@ -11,16 +11,21 @@ figure {
     float: right;
 }
 
+img {
+    border-radius: 8px;
+    height:200px;
+}
+
 #article, #aside, #footer, #header, #nav {
     padding: 20px;
 }
 
 #header {
-    background-color: lightgreen;
+    background-color: paleturquoise;
 }
 
 #nav {
-    background-color: purple;
+    background-color: cadetblue;
     display: flex;
     /*justify-content: space-around; */
 }
@@ -38,7 +43,8 @@ figure {
 }
 
 #aside {
-    background-color: darkorange;
+    background-color: steelblue;
+    text-align: justify;
 }
 
 #footer {
