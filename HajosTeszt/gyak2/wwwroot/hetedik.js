@@ -26,25 +26,29 @@ function kérdésMegjelenítés(k) {
     }
 
 
-    /*if (document.getElementById("kép2").getAttribute('src') == "") {
-        document.createElement("&nbsp"); 
+    if (kérdés[k].image != "") {
+        document.getElementById("kép2").src = "https://szoft1.comeback.hu/hajo/" + kérdés[k].image
+        document.getElementById("kép2").style.visibility = 'visible';
     }
-    else { */document.getElementById("kép2").src = "https://szoft1.comeback.hu/hajo/" + kérdés[k].image /*}*/
+    else {
+        document.getElementById("kép2").style.visibility = 'hidden';
+    }
+
+   
+
+
 
     document.getElementById("gomb1").onclick = function vissza() {
         visszaszín();
-
         if (k == 0) {
             kérdésMegjelenítés(2);
         }
         else {
-            kérdésMegjelenítés(k - 1);         
+            kérdésMegjelenítés(k - 1);
         }
     }
-
     document.getElementById("gomb2").onclick = function előre() {
         visszaszín();
-
         if (k == 2) {
             kérdésMegjelenítés(0);
         }
@@ -52,6 +56,8 @@ function kérdésMegjelenítés(k) {
             kérdésMegjelenítés(k + 1);
         }
     }
+
+
 
     document.getElementById("válasz1").onclick = function válasz1() {
         if (kérdés[k].correctAnswer == 1) {
@@ -61,7 +67,6 @@ function kérdésMegjelenítés(k) {
             document.getElementById("válasz1").style.backgroundColor = "red";
         }
     }
-
     document.getElementById("válasz2").onclick = function válasz2() {
         if (kérdés[k].correctAnswer == 2) {
             document.getElementById("válasz2").style.backgroundColor = "green";
@@ -70,7 +75,6 @@ function kérdésMegjelenítés(k) {
             document.getElementById("válasz2").style.backgroundColor = "red";
         }
     }
-
     document.getElementById("válasz3").onclick = function válasz3() {
         if (kérdés[k].correctAnswer == 3) {
             document.getElementById("válasz3").style.backgroundColor = "green";
@@ -79,6 +83,8 @@ function kérdésMegjelenítés(k) {
             document.getElementById("válasz3").style.backgroundColor = "red";
         }
     }
+
+
 
     function visszaszín() {
         document.getElementById("válasz1").style.backgroundColor = '#8860d0';
