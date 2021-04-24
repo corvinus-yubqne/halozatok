@@ -1,28 +1,94 @@
-﻿window.onload = letöltés()
+﻿window.onload = kérdésBetöltés()
 
 var kérdés;
 
-function letöltés() {
-    fetch('questions.json')
-        .then(response => response.json())
-        .then(data => letöltésBefejeződött(data));
+let i = 2;
 
-    function letöltésBefejeződött(d) {
+function kérdésBetöltés() {
+    fetch(`/questions/1`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Hibás válasz: $ {response.status}`)
+            }
+            else {
+                return response.json()
+            }
+        })
+        .then(data => kérdésMegjelenítés(data));
+}    
+
+/*function letöltés() {
+    fetch('/questions/1')
+        .then(response => response.json())
+        .then(data => kérdésMegjelenítés(data));
+
+    /*function letöltésBefejeződött(d) {
         console.log("Sikeres letöltés")
         console.log(d)
         kérdés = d;
         kérdésMegjelenítés(0)
     }
+}*/
+
+function kérdésMegjelenítés(kérdés) {
+    
+        console.log(kérdés);
+        document.getElementById("kérdés_szöveg").innerText = kérdés.questionText
+        document.getElementById("válasz1").innerText = kérdés.answer1
+        document.getElementById("válasz2").innerText = kérdés.answer2
+        document.getElementById("válasz3").innerText = kérdés.answer3
+        document.getElementById("kép2").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;
+
+
+    document.getElementById("gomb2").onclick = function előre() {
+        visszaszín();
+        
+        fetch('/questions/' + (i++))
+                .then(response => {
+                    if (!response.ok) {
+                        console.error(`Hibás válasz: $ {response.status}`)
+                    }
+                    else {
+                        return response.json()
+                    }
+                })
+            .then(data => kérdésMegjelenítés(data));
+    }
+    document.getElementById("gomb1").onclick = function vissza() {
+        visszaszín();
+
+        if (i == 0) {
+            alert('Elértél az első kérdéshez!');
+        }
+        else {
+            fetch('/questions/' + (i--))
+                .then(response => {
+                    if (!response.ok) {
+                        console.error(`Hibás válasz: $ {response.status}`)
+                    }
+                    else {
+                        return response.json()
+                    }
+                })
+                .then(data => kérdésMegjelenítés(data));
+        }
+    }
+
+    function visszaszín() {
+        document.getElementById("válasz1").style.backgroundColor = '#8860d0';
+        document.getElementById("válasz2").style.backgroundColor = '#8860d0';
+        document.getElementById("válasz3").style.backgroundColor = '#8860d0';
+    }
+        
+    
 }
 
-function kérdésMegjelenítés(k) {
-    let ide_kerdes = document.getElementById("kérdés_szöveg")
-    ide_kerdes.innerHTML = kérdés[k].questionText;
+/*function kérdésMegjelenítés(k) {
+    document.getElementById("kérdés_szöveg").innerHTML = kérdés[k].questionText;
     console.log(`$ {kérdés.length} kérdés érkezett}`)
 
     for (var i = 1; i < 4; i++) {
-        let elem_kérdés = document.getElementById("válasz" + i)
-        elem_kérdés.innerText = kérdés[k]["answer" + i]
+        document.getElementById("válasz" + i).innerText = kérdés[k]["answer" + i]
     }
 
 
@@ -91,4 +157,4 @@ function kérdésMegjelenítés(k) {
         document.getElementById("válasz2").style.backgroundColor = '#8860d0';
         document.getElementById("válasz3").style.backgroundColor = '#8860d0';
     }
-}
+}*/
