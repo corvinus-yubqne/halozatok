@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace gyak2.Controllers
 {
     //[Route("api/[controller]")]
-    [ApiController]
+    /*[ApiController]
     public class BoatController : ControllerBase
     {
         [HttpGet]
@@ -24,5 +24,5 @@ namespace gyak2.Controllers
 
             return new JsonResult(kérdés);
         }
-    }
+    }*/
 }

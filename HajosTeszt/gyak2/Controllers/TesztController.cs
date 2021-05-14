@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace gyak2.Controllers
 {
     //[Route("api/[controller]")]
-    [ApiController]
+    /*[ApiController]
     public class TesztController : ControllerBase
     {
         [HttpGet]
@@ -38,5 +38,7 @@ namespace gyak2.Controllers
                 Content = szoveg.ToUpper()
             };
         }
-    }
+
+        
+    }*/
 }
