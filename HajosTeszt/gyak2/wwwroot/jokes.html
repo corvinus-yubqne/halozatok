@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        window.onload = viccBetöltés
+
+        var jokesk = 1;
+
+        function klikk() {
+            let data = {
+                jokeText: document.getElementById("jokeText").value
+            }
+
+            fetch("api/jokes",
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+            ).then(x => {
+                if (x.ok) {
+                    alert("Siker");
+                }
+                else {
+                    alert("Kudarc :(");
+                }
+            });
+        };
+
+        function viccBetöltés() {
+            fetch(`api/jokes/${jokesk}`)
+                .then(result => {
+                    if (!result.ok) {
+                        console.error(`Hibás letöltés: ${result.status}`)
+                    }
+                    else {
+                        return result.json()
+                    }
+                })
+                .then(v => viccMegjelenítés(v));
+        }
+
+        function viccMegjelenítés(vicc) {
+            console.log(vicc);
+            document.getElementById("viccek").innerText = vicc.jokeText;
+        }
+
+        function újVicc() {
+            
+            alert("Nem kapsz!");
+        }
+    </script>
+    <form>
+        <div id="jokeList"></div>
+        <div>
+            <input id="jokeText" type="text" placeholder="Csak PC vicc" />
+        </div>
+        <button id="addButton" onclick="klikk()">Új vicc felvétele</button>
+        <br><br>
+        <div id="viccek"></div>
+        <button onclick="újVicc()">Új viccet kérek</button>
+    </form>
+</body>
+</html>
